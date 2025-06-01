@@ -2395,13 +2395,13 @@ HTML
 		# countries map?
 		if (keys %{$countries_map_data} > 0) {
 			my $countries_map_data_json = $json->encode($json->encode($countries_map_data));
-			my $countries_map_links = $json->encode($json->encode($countries_map_links));
+			my $countries_map_links_json = $json->encode($json->encode($countries_map_links));
 			my $countries_map_names_json = $json->encode($json->encode($countries_map_names));
 			$request_ref->{scripts} .= <<SCRIPTS;
 <script type="module">
 import { displayWorldMap } from '$static_subdomain/js/dist/display-list-of-tags.esm.js';
 const countries_map_data = JSON.parse($countries_map_data_json);
-const countries_map_links = JSON.parse($countries_map_links);
+const countries_map_links = JSON.parse($countries_map_links_json);
 const countries_map_names = JSON.parse($countries_map_names_json);
 displayWorldMap('#world-map', { 'data': countries_map_data, 'links': countries_map_links, 'names': countries_map_names });
 </script>
